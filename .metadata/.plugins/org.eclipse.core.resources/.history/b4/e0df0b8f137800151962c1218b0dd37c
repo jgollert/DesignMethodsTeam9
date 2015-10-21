@@ -1,0 +1,12 @@
+
+abstract class Users {
+	
+	private Credentials credentials;
+	
+	public Users(Credentials _credentials) {
+		this.credentials = _credentials;
+	}
+	
+	public abstract void viewTemplate(int studentId);
+	
+}

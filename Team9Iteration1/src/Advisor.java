@@ -4,9 +4,10 @@ import java.util.ArrayList;
 public class Advisor extends Users {
 
 	private ArrayList<Student> students;
+	private Credentials credentials;
 	
-	public Advisor(ArrayList<Student> _students)
-	{
+	public Advisor(Credentials _credentials, ArrayList<Student>_students) {
+		super(_credentials, true);
 		this.students = _students;
 	}
 	
@@ -18,6 +19,10 @@ public class Advisor extends Users {
 	
 	public boolean updateTemplate() {
 		return true;
+	}
+	
+	public void getStudentListFromDB() {
+		
 	}
 
 }

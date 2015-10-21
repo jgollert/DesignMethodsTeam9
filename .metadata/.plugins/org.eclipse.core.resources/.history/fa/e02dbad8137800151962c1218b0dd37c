@@ -1,0 +1,13 @@
+// This is where we will store all of our faux data
+public class FauxDatabase {
+	
+	private static FauxDatabase instance;
+	
+	public static synchronized FauxDatabase getInstance() {
+		if (instance == null)
+			instance = new FauxDatabase();
+		
+		return instance;
+	}
+
+}
