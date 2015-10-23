@@ -18,5 +18,14 @@ public class Credentials {
     
     public String getPassword() { return password; }
     public void setPassword(String password) { this.password = password; }    
+    
+    //Checks if credentials are the same
+    public boolean equals(Credentials c1) {
+    	if (this.userName.equals(c1.userName) && this.password.equals(c1.password)) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
 	
 }

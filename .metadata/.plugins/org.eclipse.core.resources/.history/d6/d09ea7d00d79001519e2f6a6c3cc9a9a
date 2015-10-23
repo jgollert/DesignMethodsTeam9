@@ -1,0 +1,21 @@
+
+public class Student extends Users{
+
+	private Advisor advisor;
+	private Template template;
+	
+	@Override
+	public void viewTemplate(int studentId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public Advisor getAdvisor() {
+		return advisor;
+	}
+
+	public void setAdvisor(Advisor advisor) {
+		this.advisor = advisor;
+	}
+
+}

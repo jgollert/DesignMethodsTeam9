@@ -1,0 +1,13 @@
+
+public class Student extends Users{
+
+	private Advisor advisor;
+	private Template template;
+	
+	@Override
+	public void viewTemplate(int studentId) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

@@ -5,24 +5,22 @@ public class Advisor extends Users {
 
 	private ArrayList<Student> students;
 	private Credentials credentials;
-	
-	public Advisor(Credentials _credentials, ArrayList<Student>_students) {
-		super(_credentials, true);
-		this.students = _students;
+
+	public ArrayList<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(ArrayList<Student> students) {
+		this.students = students;
 	}
 	
-	@Override
-	public void viewTemplate(int studentId) {
-		// TODO Auto-generated method stub
+	public Student getStudent(int studentId) {
+		for (Student student : students) {
+			if (studentId == student.getUserId())
+				return student;
+		}
 		
-	}
-	
-	public boolean updateTemplate() {
-		return true;
-	}
-	
-	public void getStudentListFromDB() {
-		
+		return null;
 	}
 
 }

@@ -1,0 +1,10 @@
+
+abstract class Users {
+	
+	private int userId;
+	private Credentials credentials;
+	
+	
+	public abstract void viewTemplate(int studentId);
+	
+}

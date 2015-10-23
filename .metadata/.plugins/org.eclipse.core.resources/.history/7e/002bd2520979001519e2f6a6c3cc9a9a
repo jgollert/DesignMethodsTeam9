@@ -1,0 +1,16 @@
+
+abstract class Users {
+	
+	private Credentials credentials;
+	private boolean isAdvisor;
+	private int userId;
+	
+	public Users(Credentials _credentials, boolean _isAdvisor, int _userId) {
+		this.credentials = _credentials;
+		this.isAdvisor = _isAdvisor;
+		this.userId = _userId;
+	}
+	
+	public abstract void viewTemplate(int studentId);
+	
+}

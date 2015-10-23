@@ -1,10 +1,9 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class POSController {
 
-	private static int selection = 0;
+	private static int selection = -1;
 	private static Scanner sc = new Scanner(System.in);
 	private static Users currentUser;
 	
@@ -12,63 +11,114 @@ public class POSController {
 		
 		// TODO Auto-generated method stub		
 		
-	
+		// First login
+		// If student 
+		// 1. Display student menu
+		
+		currentUser = Login();
+		
+		if (currentUser == null) {
+			// User isn't found
+			System.out.println("User not found!");
+		} else {
+			
+			// Since the database returned a user let's begin our program loop
+			while (selection != 0)
+			{				
+				if (currentUser instanceof Advisor) {
+					// Do advisor things
+					DisplayAdvisorMenu();
+					
+				} else {
+					// Do student things
+					DisplayStudentMenu();
+				}
+			}
+		}
 	}
 	
 	private static Users Login() {
 		Credentials credentials = new Credentials();
 		
-		System.out.println("Please Login");
+		// Login our user
+		System.out.println("Please Login\n");
 		System.out.print("Username: ");
 		credentials.setUserName(sc.next());
-		System.out.print("Password:" );
+		System.out.print("Password: " );
 		credentials.setPassword(sc.next());
+		System.out.println();
 		
-		return null;
+		return FauxDatabase.getInstance().validateUser(credentials);
 	}
 	
-	// This would make a call to banner to authenticate user and return
-	// 1 is advisor
-	// 0 is student
-	// -1 the user does not exist
-	// This is a faux class
-	private static int authenticateUser(Credentials credentials) {
-		// Represents database of advisors
-		ArrayList<Credentials> advisorCredentials = new ArrayList<Credentials>() {{
-			add(new Credentials("pBond", "admin"));
-			add(new Credentials("wShoaff", "admin"));
-			add(new Credentials("pBernhard", "admin"));
-		}};
-		
-		// Represents database of students
-		ArrayList<Credentials> studentCredentials = new ArrayList<Credentials>() {{
-			add(new Credentials("jGollert", "student"));
-			add(new Credentials("sRoig", "student"));
-			add(new Credentials("mTishman", "student"));
-		}};
-		
-		if (advisorCredentials.contains(credentials))
-			return 1;
-		else if (studentCredentials.contains(credentials))
-			return 0;
-		
-		// If user is not in DB then we shall return -1
-		return -1;
-		
-	}
-	
-	private void DisplayStudentMenu()
+	private static void DisplayStudentMenu()
 	{
-		System.out.println("1. View Template\n-1. Logout\n");
-		selection = sc.nextInt();
-	}
-	
-	private void DisplayAdvisorMenu()
-	{
-		System.out.println("1. View Template\n2. Modify Template\n-1. Logout\n");
+		System.out.println("1. View Template\n0. Logout\n");
+		
 		selection = sc.nextInt();
 		
+		System.out.println();
 		
+		if (selection == 1) {
+			System.out.println(((Student) currentUser).getTemplate());
+		}
+	}
+	
+	private static void DisplayAdvisorMenu()
+	{
+		System.out.println("1. View Template\n2. Modify Template\n0. Logout\n");
+		
+		selection = sc.nextInt();
+		
+		System.out.println();
+		
+		if (selection == 1) {
+			// If advisor
+			// 1. View Template - Give list of advisor's students and their corresponding id
+			// 2. Update template 
+			
+			System.out.println("Which student's template would you like to see? \n");
+			
+			for (Student student : ((Advisor) currentUser).getStudents()) {
+				System.out.println(student.getUserId() + ". " + student.getCredentials().getUserName());
+			}
+			
+			System.out.println( ((Advisor) currentUser).getStudent(sc.nextInt()).getTemplate());
+			
+		} else if (selection == 2) {
+			// Show advisor list of students
+			System.out.println("Which student's template would you like to modify? \n");
+			
+			for (Student student : ((Advisor) currentUser).getStudents()) {
+				System.out.println(student.getUserId() + ". " + student.getCredentials().getUserName());
+			}
+			
+			Student currentStudent = ((Advisor) currentUser).getStudent(sc.nextInt());
+			
+			System.out.println( currentStudent.getTemplate());
+			
+			System.out.println("Which class would you like to replace?");
+			
+			int id = sc.nextInt();
+					
+			System.out.println("\nEnter new course name: ");
+			
+			String courseName = sc.next();
+			
+			System.out.println("\nEnter new course semester: ");
+			
+			String semester = sc.next();
+			
+			System.out.println("\nEnter new course year: ");
+			
+			int year = sc.nextInt();
+			
+			Course replacementCourse = new Course(courseName, semester, year, id);
+					
+			currentStudent.getTemplate().replaceCourse(replacementCourse, id);
+			
+						
+		}	
 	}
 
 }

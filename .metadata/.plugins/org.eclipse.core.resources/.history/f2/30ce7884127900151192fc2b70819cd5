@@ -1,0 +1,24 @@
+import java.util.ArrayList;
+
+
+public class Advisor extends Users {
+
+	private ArrayList<Student> students;
+	private Credentials credentials;
+
+	
+
+	public ArrayList<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(ArrayList<Student> students) {
+		this.students = students;
+	}
+
+	public Template getTemplate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

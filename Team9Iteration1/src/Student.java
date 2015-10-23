@@ -2,17 +2,22 @@
 public class Student extends Users{
 
 	private Advisor advisor;
-	
-	public Student(Credentials _credentials, Advisor _advisor) {
-		super(_credentials, false);
-		this.advisor = _advisor;
-		// TODO Auto-generated constructor stub
+	private Template template;
+
+	public Advisor getAdvisor() {
+		return advisor;
 	}
 
-	@Override
-	public void viewTemplate(int studentId) {
-		// TODO Auto-generated method stub
-		
+	public void setAdvisor(Advisor advisor) {
+		this.advisor = advisor;
+	}
+
+	public Template getTemplate() {
+		return template;
+	}
+
+	public void setTemplate(Template template) {
+		this.template = template;
 	}
 
 }

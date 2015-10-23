@@ -1,14 +1,25 @@
 
 abstract class Users {
 	
+	private int userId;
 	private Credentials credentials;
-	private boolean isAdvisor;
-	
-	public Users(Credentials _credentials, boolean _isAdvisor) {
-		this.credentials = _credentials;
-		this.isAdvisor = _isAdvisor;
+
+	public Credentials getCredentials() {
+		return credentials;
 	}
-	
-	public abstract void viewTemplate(int studentId);
+
+
+	public void setCredentials(Credentials credentials) {
+		this.credentials = credentials;
+	}
+
+	public int getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 	
 }

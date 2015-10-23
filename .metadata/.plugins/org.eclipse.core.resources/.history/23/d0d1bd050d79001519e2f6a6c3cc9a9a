@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+
+public class POSController {
+
+	private static int selection = 0;
+	private static Scanner sc = new Scanner(System.in);
+	private static Users currentUser;
+	
+	public static void main(String[] args) {
+		
+		// TODO Auto-generated method stub		
+		
+		// First login
+		// If student 
+		// 1. Display student menu
+		// If advisor
+		// 1. View Template - Give list of advisor's students and their corresponding id
+		// 2. Update template 
+		
+		currentUser = Login();
+		
+		if (currentUser == null) {
+			// User isn't found
+			System.out.println("User not found!");
+		} else {
+			
+			while (selection != -1)
+			{
+				currentUser = Login();
+				
+				
+			}
+		}
+	}
+	
+	private static Users Login() {
+		Credentials credentials = new Credentials();
+		
+		System.out.println("Please Login");
+		System.out.print("Username: ");
+		credentials.setUserName(sc.next());
+		System.out.print("Password:" );
+		credentials.setPassword(sc.next());
+		
+		return FauxDatabase.getInstance().validateUser(credentials);
+	}
+	
+	private void DisplayStudentMenu()
+	{
+		System.out.println("1. View Template\n-1. Logout\n");
+		
+		selection = sc.nextInt();
+	}
+	
+	private void DisplayAdvisorMenu()
+	{
+		System.out.println("1. View Template\n2. Modify Template\n-1. Logout\n");
+		selection = sc.nextInt();
+		
+		
+	}
+
+}
