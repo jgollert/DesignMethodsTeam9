@@ -19,5 +19,9 @@ public class Student extends Users{
 	public void setTemplate(Template template) {
 		this.template = template;
 	}
+	
+	public String showTemplate() {
+		return template.toString();
+	}
 
 }

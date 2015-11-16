@@ -63,11 +63,8 @@ public class FauxDatabase {
 			add (a1);
 			add (s1);
 			add (s2);
-		}};	
-	}
-	
-	public void addTemplate(Template template) {
-		templateList.add(template);
+		}};
+		
 	}
 	
 	public Users validateUser (Credentials credentials) {

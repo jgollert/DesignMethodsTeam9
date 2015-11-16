@@ -77,12 +77,46 @@ public class POSController {
 			// 1. View Template - Give list of advisor's students and their corresponding id
 			// 2. Update template 
 			
-			((Advisor) currentUser).viewStudentTemplate(sc);
-
+			System.out.println("Which student's template would you like to see? \n");
+			
+			for (Student student : ((Advisor) currentUser).getStudents()) {
+				System.out.println(student.getUserId() + ". " + student.getCredentials().getUserName());
+			}
+			
+			System.out.println( ((Advisor) currentUser).getStudent(sc.nextInt()).showTemplate());
 			
 		} else if (selection == 2) {
-
-			((Advisor) currentUser).updateStudentTemplate(sc);
+			// Show advisor list of students
+			System.out.println("Which student's template would you like to modify? \n");
+			
+			for (Student student : ((Advisor) currentUser).getStudents()) {
+				System.out.println(student.getUserId() + ". " + student.getCredentials().getUserName());
+			}
+			
+			Student currentStudent = ((Advisor) currentUser).getStudent(sc.nextInt());
+			
+			System.out.println( currentStudent.showTemplate());
+			
+			System.out.println("Which class would you like to replace?");
+			
+			int id = sc.nextInt();
+					
+			System.out.println("\nEnter new course name: ");
+			
+			String courseName = sc.next();
+			
+			System.out.println("\nEnter new course semester: ");
+			
+			String semester = sc.next();
+			
+			System.out.println("\nEnter new course year: ");
+			
+			int year = sc.nextInt();
+			
+			Course replacementCourse = new Course(courseName, semester, year, id);
+					
+			currentStudent.getTemplate().replaceCourse(replacementCourse, id);
+			
 						
 		}	
 	}

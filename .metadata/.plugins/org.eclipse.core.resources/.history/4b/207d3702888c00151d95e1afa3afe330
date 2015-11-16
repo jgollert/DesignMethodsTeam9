@@ -59,38 +59,6 @@ public class Advisor extends Users {
 		currentStudent.getTemplate().replaceCourse(replacementCourse, id);
 	}
 	
-	public void createTemplate (Scanner sc) {
-		
-		System.out.print("Enter the program name for the template: ");
-		String name = sc.next();
-		
-		System.out.print("Enter the program year: ");
-		int year = sc.nextInt();
-		
-		ArrayList<Course> courses = new ArrayList<Course>();
-		int selection = 1;
-		do {
-			System.out.print("Enter a name for your course: ");
-			String courseName = sc.next();
-			
-			System.out.print("Enter the course semester: ");
-			String semester = sc.next();
-			
-			System.out.print("Enter the course year: ");
-			int courseYear = sc.nextInt();
-			
-			System.out.print("Enter the course id: ");
-			int id = sc.nextInt();
-			
-			
-			
-			
-		}while (selection == 1);
-	}
-	
-	public void assigntStudentTemplate (Scanner sc) {
-		
-	}
 	
 	public Student getStudent(int studentId) {
 		for (Student student : students) {
