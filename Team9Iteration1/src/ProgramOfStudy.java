@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 
-public class Template {
+public class ProgramOfStudy {
 	
 	private ArrayList<Course> courses;
-	private int templateYear;
+	private int programYear;
 	private String programName;
 	
 	public ArrayList<Course> getCourses() {
@@ -27,12 +27,12 @@ public class Template {
 		
 	}
 	
-	public int getTemplateYear() {
-		return templateYear;
+	public int getProgramYear() {
+		return programYear;
 	}
 	
-	public void setTemplateYear(int templateYear) {
-		this.templateYear = templateYear;
+	public void setProgramYear(int programYear) {
+		this.programYear = programYear;
 	}
 	
 	public String getProgramName() {
@@ -47,7 +47,7 @@ public class Template {
 		
 		String str = "";
 		
-		str += programName + " " + templateYear + "\n\n";
+		str += "Program: " + programName + " Year: " + programYear + "\n\n";
 		
 		for (Course course: courses) {
 			str += course + "\n";
@@ -57,6 +57,13 @@ public class Template {
 		return str;
 	}
 	
-	
+public String shortString() {
+		
+		String str = "";
+		
+		str += "Program: " + programName + " Year: " + programYear + "\n\n";
+		
+		return str;
+	}
 	
 }

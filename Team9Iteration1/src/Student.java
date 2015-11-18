@@ -2,7 +2,7 @@
 public class Student extends Users{
 
 	private Advisor advisor;
-	private Template template;
+	private ProgramOfStudy template;
 
 	public Advisor getAdvisor() {
 		return advisor;
@@ -12,16 +12,22 @@ public class Student extends Users{
 		this.advisor = advisor;
 	}
 
-	public Template getTemplate() {
+	public ProgramOfStudy getProgram() {
 		return template;
 	}
 
-	public void setTemplate(Template template) {
+	public void setProgram(ProgramOfStudy template) {
 		this.template = template;
 	}
 	
-	public String showTemplate() {
-		return template.toString();
+	public boolean showProgram() {
+		if (template == null) {
+			System.out.println("This student doesn't have a program yet!");
+			return false;
+		} else {
+			System.out.println(template.toString());
+			return true;
+		}
 	}
 
 }

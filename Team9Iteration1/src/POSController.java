@@ -53,38 +53,46 @@ public class POSController {
 	
 	private static void DisplayStudentMenu()
 	{
-		System.out.println("1. View Template\n0. Logout\n");
-		
+		System.out.println("1. View Program\n0. Logout\n");
+		System.out.print("Please enter an action id: ");
 		selection = sc.nextInt();
 		
 		System.out.println();
 		
 		if (selection == 1) {
-			System.out.println(((Student) currentUser).showTemplate());
+			((Student) currentUser).showProgram();
+		} else if (selection != 0) {
+			System.out.println("Invalid selection!");
 		}
 	}
 	
 	private static void DisplayAdvisorMenu()
 	{
-		System.out.println("1. View Template\n2. Modify Template\n0. Logout\n");
-		
+		System.out.println("1. View Program\n2. Modify Program\n3. Give Student New Program\n4. Create Program Template\n0. Logout\n");
+		System.out.print("Please enter an action id: ");
 		selection = sc.nextInt();
 		
 		System.out.println();
 		
 		if (selection == 1) {
 			// If advisor
-			// 1. View Template - Give list of advisor's students and their corresponding id
-			// 2. Update template 
+			// 1. View Program - Give list of advisor's students and their corresponding id
+			// 2. Modify Program 
+			// 3. Give student new Program
+			// 4. Create template
 			
-			((Advisor) currentUser).viewStudentTemplate(sc);
+			((Advisor) currentUser).viewStudentProgram(sc);
 
 			
 		} else if (selection == 2) {
-
-			((Advisor) currentUser).updateStudentTemplate(sc);
-						
-		}	
+			((Advisor) currentUser).modifyStudentProgram(sc);			
+		} else if (selection == 3) {
+			((Advisor) currentUser).giveStudentProgram(sc);
+		} else if (selection == 4) {
+			((Advisor) currentUser).createProgramTemplate(sc);
+		} else if (selection != 0) {
+			System.out.println("Invalid selection!");
+		} 
 	}
 
 }
